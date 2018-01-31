@@ -1,6 +1,8 @@
 #' ---
 #' output: github_document
 #' ---
+
+library(dplyr)
 options(stringsAsFactors = FALSE)
 
 
@@ -11,8 +13,7 @@ options(stringsAsFactors = FALSE)
 head(installed.packages())
 
 ## use installed.packages() to get all installed packages
-instPckgs <- installed.packages()
-instPckgs <- data.frame(instPckgs)
+instPckgs <- installed.packages() %>% as_tibble()
 
 ## how many packages?
 nrow(instPckgs)
@@ -21,15 +22,11 @@ nrow(instPckgs)
 
 ## count some things! inspiration
 ##   * tabulate by LibPath, Priority, or both
-LibPaths <- unique(instPckgs$LibPath)
-countLibPaths <- sapply(LibPaths, function(x) {length(instPckgs$LibPath[instPckgs$LibPath==x])})
-(tabLibPath <- data.frame(LibPaths, countLibPaths))
+instPckgs %>% count(LibPath)
 
-Priorities <- unique(instPckgs$Priority)
-countPriorities <- sapply(Priorities, function(x) {length(instPckgs$Priority[instPckgs$Priority==x])})
-(tabPriorities <- data.frame(Priorities, countPriorities))
-
+instPckgs %>% count(Priority)
 ##   * what proportion need compilation?
+
 ##   * how break down re: version of R they were built on
 
 
