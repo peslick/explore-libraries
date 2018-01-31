@@ -6,7 +6,7 @@
 .libPaths()
 
 #' Installed packages
-installed.packages()
+head(installed.packages())
 
 ## use installed.packages() to get all installed packages
 instPckgs <- installed.packages()
