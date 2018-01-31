@@ -1,6 +1,8 @@
 #' ---
 #' output: github_document
 #' ---
+options(stringsAsFactors = FALSE)
+
 
 #' Which libraries does R search for packages?
 .libPaths()
@@ -21,12 +23,12 @@ nrow(instPckgs)
 ##   * tabulate by LibPath, Priority, or both
 LibPaths <- unique(instPckgs$LibPath)
 countLibPaths <- sapply(LibPaths, function(x) {length(instPckgs$LibPath[instPckgs$LibPath==x])})
-tabLibPath <- data.frame(LibPaths, countLibPaths)
+(tabLibPath <- data.frame(LibPaths, countLibPaths))
 
 instPckgs$Priority
 Priorities <- unique(instPckgs$Priority)
 countPriorities <- sapply(Priorities, function(x) {length(instPckgs$Priority[instPckgs$Priority==x])})
-tabPriorities <- data.frame(Priorities, countPriorities)
+(tabPriorities <- data.frame(Priorities, countPriorities))
 
 ##   * what proportion need compilation?
 ##   * how break down re: version of R they were built on
