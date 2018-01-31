@@ -25,7 +25,6 @@ LibPaths <- unique(instPckgs$LibPath)
 countLibPaths <- sapply(LibPaths, function(x) {length(instPckgs$LibPath[instPckgs$LibPath==x])})
 (tabLibPath <- data.frame(LibPaths, countLibPaths))
 
-instPckgs$Priority
 Priorities <- unique(instPckgs$Priority)
 countPriorities <- sapply(Priorities, function(x) {length(instPckgs$Priority[instPckgs$Priority==x])})
 (tabPriorities <- data.frame(Priorities, countPriorities))
